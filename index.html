@@ -1,0 +1,1733 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>灰原什么的最可爱了(●'◡'●)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #e74c3c;
+            --accent-color: #9b59b6;
+            --background-dark: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            --background-light: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            --text-dark: #ecf0f1;
+            --text-light: #4a5568;
+            --card-dark: rgba(44, 62, 80, 0.85);
+            --card-light: rgba(255, 255, 255, 0.85);
+            --shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+            --border-radius: 16px;
+        }
+        
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: var(--background-dark);
+            font-family: "微软雅黑", "PingFang SC", sans-serif;
+            height: 100vh;
+            position: relative;
+            cursor: default;
+            transition: background 0.5s ease;
+        }
+        
+        .title {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--text-dark);
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            text-align: center;
+            z-index: 100;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+            background: var(--card-dark);
+            padding: 12px 24px;
+            border-radius: var(--border-radius);
+            backdrop-filter: blur(12px);
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            max-width: 90%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .title:hover {
+            transform: translateX(-50%) scale(1.05);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+        }
+        
+        .sticker {
+            position: absolute;
+            padding: 12px 18px;
+            border-radius: var(--border-radius);
+            color: white;
+            font-family: "微软雅黑", "PingFang SC", sans-serif;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+            white-space: nowrap;
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.3s ease;
+            z-index: 1;
+            font-weight: 600;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            max-width: 90vw;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            max-width: 300px;
+            white-space: normal;
+            word-break: break-word;
+            animation: float 10s infinite ease-in-out, glow 3s infinite ease-in-out;
+        }
+        
+        .sticker:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            z-index: 2;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-15px) rotate(1deg);
+            }
+            50% {
+                transform: translateY(-5px) rotate(-1deg);
+            }
+            75% {
+                transform: translateY(-10px) rotate(2deg);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.08);
+            }
+        }
+        
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+            }
+            50% {
+                box-shadow: 0 6px 25px rgba(255, 255, 255, 0.2);
+            }
+        }
+        
+        .heart {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background: rgba(255, 99, 132, 0.8);
+            transform: rotate(45deg);
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .heart:before, .heart:after {
+            content: '';
+            width: 24px;
+            height: 24px;
+            background: rgba(255, 99, 132, 0.8);
+            border-radius: 50%;
+            position: absolute;
+        }
+        
+        .heart:before {
+            top: -12px;
+            left: 0;
+        }
+        
+        .heart:after {
+            top: 0;
+            left: -12px;
+        }
+        
+        @keyframes heartFloat {
+            0% {
+                transform: rotate(45deg) translateY(0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: rotate(45deg) translateY(-120px) scale(0.5);
+                opacity: 0;
+            }
+        }
+        
+        .controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+        
+        .control-btn {
+            background: var(--card-dark);
+            padding: 10px 18px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            backdrop-filter: blur(12px);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .control-btn:hover {
+            background: rgba(52, 73, 94, 0.9);
+            transform: scale(1.08);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+        }
+        
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .settings-panel {
+            position: absolute;
+            top: 80px;
+            right: 20px;
+            background: rgba(44, 62, 80, 0.95);
+            padding: 18px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            color: var(--text-dark);
+            z-index: 100;
+            backdrop-filter: blur(12px);
+            width: 280px;
+            display: none;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .settings-panel h3 {
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--accent-color);
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            color: var(--text-dark);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(90deg);
+        }
+        
+        .setting-item {
+            margin-bottom: 16px;
+        }
+        
+        .setting-item label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 0.85rem;
+        }
+        
+        .setting-item input[type="range"] {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            height: 6px;
+            outline: none;
+        }
+        
+        .setting-item input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--card-dark);
+            padding: 10px 18px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            z-index: 100;
+            backdrop-filter: blur(12px);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .theme-toggle:hover {
+            background: rgba(52, 73, 94, 0.9);
+            transform: scale(1.08);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+        }
+        
+        .music-player {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: var(--card-dark);
+            padding: 12px 18px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            color: var(--text-dark);
+            z-index: 100;
+            backdrop-filter: blur(12px);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            max-width: 280px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .music-btn {
+            background: none;
+            border: none;
+            color: var(--text-dark);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 6px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .music-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.1);
+        }
+        
+        .progress-bar {
+            width: 120px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background: var(--primary-color);
+            width: 0%;
+            transition: width 0.1s linear;
+            border-radius: 3px;
+        }
+        
+        .effect-buttons {
+            position: absolute;
+            top: 80px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+        
+        .effect-btn {
+            background: var(--card-dark);
+            padding: 10px 18px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            backdrop-filter: blur(12px);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .effect-btn:hover {
+            background: rgba(52, 73, 94, 0.9);
+            transform: scale(1.08);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+        }
+        
+        .effect-btn.active {
+            background: var(--accent-color);
+            box-shadow: 0 6px 20px rgba(155, 89, 182, 0.4);
+        }
+        
+        .notification {
+            position: fixed;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(44, 62, 80, 0.95);
+            color: var(--text-dark);
+            padding: 12px 24px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            backdrop-filter: blur(12px);
+            display: none;
+            animation: fadeInOut 3s ease;
+            text-align: center;
+            max-width: 80%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0; transform: translateX(-50%) translateY(20px); }
+            10%, 90% { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+        
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--card-dark);
+            padding: 12px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            z-index: 100;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .mobile-menu-btn {
+            background: none;
+            border: none;
+            color: var(--text-dark);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 6px;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .mobile-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            backdrop-filter: blur(8px);
+        }
+        
+        .mobile-panel button {
+            background: var(--card-dark);
+            border: none;
+            color: var(--text-dark);
+            padding: 16px 32px;
+            border-radius: var(--border-radius);
+            font-size: 1.2rem;
+            cursor: pointer;
+            width: 80%;
+            max-width: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+        
+        .mobile-panel button:hover {
+            transform: scale(1.05);
+            background: rgba(52, 73, 94, 0.9);
+        }
+        
+        .close-mobile {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text-dark);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .close-mobile:hover {
+            transform: rotate(90deg);
+        }
+        
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 54px;
+            height: 28px;
+        }
+        
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 28px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: var(--primary-color);
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        
+        .stats-panel {
+            position: absolute;
+            top: 80px;
+            right: 20px;
+            background: rgba(44, 62, 80, 0.95);
+            padding: 18px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            color: var(--text-dark);
+            z-index: 100;
+            backdrop-filter: blur(12px);
+            width: 200px;
+            display: none;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .stats-panel h3 {
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+            color: var(--accent-color);
+        }
+        
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .title {
+                top: 15px;
+                padding: 10px 20px;
+                font-size: 1.3rem;
+            }
+            
+            .controls, .effect-buttons, .theme-toggle {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .music-player {
+                bottom: 15px;
+                left: 15px;
+                padding: 10px 15px;
+                max-width: 250px;
+            }
+            
+            .settings-panel {
+                top: 70px;
+                right: 15px;
+                width: calc(100% - 30px);
+                max-width: 300px;
+            }
+            
+            .sticker {
+                font-size: 14px;
+                padding: 10px 14px;
+            }
+            
+            .control-btn, .effect-btn, .theme-toggle {
+                padding: 12px 16px;
+                font-size: 0.85rem;
+            }
+            
+            .stats-panel {
+                top: 70px;
+                right: 15px;
+                width: calc(100% - 30px);
+                max-width: 250px;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .mobile-menu, .mobile-panel {
+                display: none !important;
+            }
+        }
+        
+        .custom-text-input {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--card-dark);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            backdrop-filter: blur(12px);
+            width: 90%;
+            max-width: 400px;
+            display: none;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .custom-text-input h3 {
+            margin-bottom: 15px;
+            color: var(--accent-color);
+        }
+        
+        .custom-text-input textarea {
+            width: 100%;
+            height: 120px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--border-radius);
+            padding: 12px;
+            color: var(--text-dark);
+            font-family: inherit;
+            resize: none;
+            margin-bottom: 15px;
+        }
+        
+        .custom-text-input textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .custom-text-input .buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        
+        .custom-text-input button {
+            background: var(--primary-color);
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .custom-text-input button:hover {
+            background: #2980b9;
+        }
+        
+        .custom-text-input button.cancel {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .custom-text-input button.cancel:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .edit-mode .sticker {
+            cursor: move;
+        }
+        
+        .edit-mode .sticker:hover {
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="title">灰原什么的最可爱了(●'◡'●)</div>
+    <div class="theme-toggle"><i class="fas fa-sun"></i> 日间模式</div>
+    
+    <div class="controls">
+        <button class="control-btn" id="clearBtn"><i class="fas fa-trash"></i> 清除标签</button>
+        <button class="control-btn" id="settingsBtn"><i class="fas fa-cog"></i> 设置</button>
+        <button class="control-btn" id="customTextBtn"><i class="fas fa-edit"></i> 自定义标签</button>
+        <button class="control-btn" id="editModeBtn"><i class="fas fa-hand-paper"></i> 编辑模式</button>
+        <button class="control-btn" id="statsBtn"><i class="fas fa-chart-bar"></i> 统计信息</button>
+    </div>
+    
+    <div class="effect-buttons">
+        <button class="effect-btn" id="rainbowBtn"><i class="fas fa-palette"></i> 彩虹模式</button>
+        <button class="effect-btn" id="pulseBtn"><i class="fas fa-heartbeat"></i> 心跳模式</button>
+        <button class="effect-btn" id="explodeBtn"><i class="fas fa-bomb"></i> 爆炸效果</button>
+    </div>
+    
+    <div class="mobile-menu">
+        <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+    </div>
+    
+    <div class="mobile-panel" id="mobilePanel">
+        <button class="close-mobile" id="closeMobile"><i class="fas fa-times"></i></button>
+        <button id="mobileClearBtn"><i class="fas fa-trash"></i> 清除标签</button>
+        <button id="mobileSettingsBtn"><i class="fas fa-cog"></i> 设置</button>
+        <button id="mobileCustomTextBtn"><i class="fas fa-edit"></i> 自定义标签</button>
+        <button id="mobileRainbowBtn"><i class="fas fa-palette"></i> 彩虹模式</button>
+        <button id="mobilePulseBtn"><i class="fas fa-heartbeat"></i> 心跳模式</button>
+        <button id="mobileExplodeBtn"><i class="fas fa-bomb"></i> 爆炸效果</button>
+        <button id="mobileThemeBtn"><i class="fas fa-sun"></i> 切换主题</button>
+        <button id="mobileStatsBtn"><i class="fas fa-chart-bar"></i> 统计信息</button>
+    </div>
+    
+    <div class="settings-panel" id="settingsPanel">
+        <h3>设置 <button class="close-btn" id="closeSettings"><i class="fas fa-times"></i></button></h3>
+        <div class="setting-item">
+            <label for="animationSpeed">动画速度: <span id="speedValue">正常</span></label>
+            <input type="range" id="animationSpeed" min="1" max="5" value="3">
+        </div>
+        <div class="setting-item">
+            <label for="fontSize">字体大小: <span id="sizeValue">中等</span></label>
+            <input type="range" id="fontSize" min="1" max="5" value="3">
+        </div>
+        <div class="setting-item">
+            <label for="maxStickers">最大标签数: <span id="maxStickersValue">100</span></label>
+            <input type="range" id="maxStickers" min="10" max="200" value="100">
+        </div>
+        <div class="setting-item">
+            <label>
+                <input type="checkbox" id="enableParticles" checked> 启用粒子效果
+            </label>
+        </div>
+        <div class="setting-item">
+            <label>
+                <input type="checkbox" id="enableHearts" checked> 启用心形动画
+            </label>
+        </div>
+        <div class="setting-item">
+            <label>
+                <input type="checkbox" id="enableMusic" checked> 启用背景音乐
+            </label>
+        </div>
+        <div class="setting-item">
+            <label>
+                <input type="checkbox" id="enableStorage"> 保存设置和标签
+            </label>
+        </div>
+    </div>
+    
+    <div class="stats-panel" id="statsPanel">
+        <h3>统计信息</h3>
+        <div class="stat-item">
+            <span>当前标签数:</span>
+            <span id="currentStickers">0</span>
+        </div>
+        <div class="stat-item">
+            <span>最大标签数:</span>
+            <span id="maxStickersDisplay">100</span>
+        </div>
+        <div class="stat-item">
+            <span>生成速度:</span>
+            <span id="generationSpeed">1秒/个</span>
+        </div>
+        <div class="stat-item">
+            <span>删除条件:</span>
+            <span id="removalSpeed">达到100个</span>
+        </div>
+    </div>
+    
+    <div class="custom-text-input" id="customTextInput">
+        <h3>添加自定义标签</h3>
+        <textarea id="customTextArea" placeholder="请输入你想要显示的文本..."></textarea>
+        <div class="buttons">
+            <button class="cancel" id="cancelCustomText">取消</button>
+            <button id="saveCustomText">添加</button>
+        </div>
+    </div>
+    
+    <div class="music-player">
+        <button class="music-btn" id="playBtn"><i class="fas fa-play"></i></button>
+        <button class="music-btn" id="pauseBtn"><i class="fas fa-pause"></i></button>
+        <div class="progress-bar">
+            <div class="progress" id="musicProgress"></div>
+        </div>
+        <span id="musicTime">0:00</span>
+    </div>
+    
+    <div class="notification" id="notification"></div>
+
+    <script>
+        // 励志文本数组
+        const texts = [
+            "你值得这世间，所有的美好。",
+            "心若有所向往，何惧道阻且长。",
+            "命运不会亏待正在努力变好的你",
+            "愿你成为自己的太阳，无需借助谁的光。",
+            "凭时间赢来的东西，时间肯定会为之作证。",
+            "错过了落日余晖，还可以静待满天繁星。",
+            "努力去做一个温暖的人，用真心对世界微笑，用眼泪提醒自己要做的更好，用快乐去迎接每一天的阳光，用自信向世界宣称你过得很好。",
+            "不要沉醉于过去，不要遐想于未来，专注于即将流逝的现在。",
+            "你永远没有资格去看不起一个正在努力的人。",
+            "身后还有那么多期许的目光，你怎么可以轻易放弃。",
+            "每天提醒自己，你有多自律，就有多美好。只要你还愿意努力，生活会不断给你惊喜！",
+            "请再努力一下，为了你想见的人，想做的事，想成为的自己",
+            "把努力当成一种习惯，而不是三分钟热度。坚持才是王道，每一个你羡慕的收获，都是别人努力用心拼来的，你可以报怨，也可以无视，但记住，不努力，连认输的资格都没有！",
+            "捂住你的耳朵，专注于而前的事，不要受干扰，不要想结果。",
+            "就算步子很小，也要一步步前进。",
+            "陪你到最后的那个人，只有你自己，你就是自己的神。",
+            "要好好珍惜自己的名字：记得自己是谁，便知道自己要做什么，要走什么样的路。",
+            "过往不恋，未来不迎，当下不负。",
+            "你期待的，正在向你走来​。",
+            "努力追上那个曾经被赋予厚望的自己",
+            "迷茫时，坚定地对自己说，当时的梦想，我还记得",
+            "如果你累了，学会休息，而不是放弃。",
+            "坐看庭前花开花落，笑看天边云卷云舒。",
+            "发光不是太阳的权利，每个人都可以。",
+            "无论这个世界对你怎样，都请你一如既往的努力、勇敢、充满希望。",
+            "即使生活有一千个理由让你哭，你也要找到一个理由让自己笑，这就是人生。",
+            "想要无可取代，就必须时刻与众不同。",
+            "你干嘛在乎别人怎么想？",
+            "当你能一个人默默消化掉负面情绪的时候，你就真的长大了",
+            "失落时悄悄伸出手和风击个掌。",
+            "心中的微光，是梦想出发的地方。",
+            "糟糕的日子往往有特别的价值 但前提是你要挺过去 你要让所有的糟糕都变得值得",
+            "生活不是等着暴风雨过去，而是学会在风雨中跳舞。",
+            "当你觉得什么都没意思的时候你就学习，学起习来身边的任何东西都变得有趣了。",
+            "星光不问赶路人，时光不负有心人。",
+            "真正在努力的，日子是不会舒服的。把自己变优秀，其他的事情自然就会跟着好起来，会讲究，能将就，能享受最好的，也能承受最坏的。",
+            "老师说过，人生总是得有几年的沉淀时间。那段日子，你会很孤独，很落魄，很狼狈，但这段的经历，会影响你未来几十年的人生。与君共勉。",
+            "等熬过这些日子，一切都会变好的。",
+            "努力过后，才知道许多事情，坚持坚持，就过来了",
+            "你敷衍生活，生活就会敷衍你",
+            "人生最精彩的不是成功的那一瞬间，而是回头看，那段漆黑看似没有尽头、苦苦摸索的过程。",
+            "黑夜无论怎样悠长，白昼总会到来！昨天终将过去，明日灿烂依然！",
+            "人间一趟，积极向上，不念过往，不畏将来",
+            "与其在别人伞下将就，不如自己在雨里奔跑。",
+            "向日葵告诉我，只要面对着阳光努力向上，日子就会变得单纯而美好。",
+            "如今我努力奔跑，不过是为了追上那个曾经被寄予厚望的自己。",
+            "接受自己的普通，也要记得发现自己的美。",
+            "在这样的时刻，我们需要耐心等待，满怀信心地去期待，相信，生活不会放弃你，命运不会抛弃你。如果你耐不住寂寞，就看不到繁华。",
+            "阻碍你的，是恐惧和优柔寡断，你得相信自己，往前走吧。",
+            "一旦你从心里接纳了自己的弱点，就再也没有人可以用这个事情伤害你。",
+            "人生的旅途中，你总有那么一段时间，需要自己走，需要自己扛。不要感觉害怕，不要感觉孤单，这只不过是成长的代价罢了。",
+            "真正治愈自己的，只有自己；不去抱怨，尽量担待；不怕孤单，努力沉淀。",
+            "我经历了失败、失败再失败，但这就是我成功的原因。",
+            "当你足够努力时，幸运总会和你不期而遇。",
+            "这一路你可以哭，但是你一定不能停。",
+            "不要尝试做你喜欢的事，要去喜欢你正在做的事。",
+            "生活在阴沟里，也要记得仰望星空",
+            "你未必光芒万丈，但始终温暖有光。",
+            "因为有梦，所以勇敢出发，选择出发，便只顾风雨兼程。",
+            "今日披星戴月，明朝轻舞飞扬。",
+            "谁不是一边受挫折，一边学坚强。",
+            "你所热爱的 就是你的生活",
+            "人生，总些黑暗的隧道需要自己穿越。",
+            "当生活压得你喘不过来气的时候，一定要学会自己为自己鼓掌。",
+            "做自己喜欢做的事情，做自己擅长的事情，找回成功的喜悦，找回失去的信心，找到前进动力和方向。",
+            "很多事情就像是旅行一样，当你决定要出发的时候，最困难的那部分其实就已经完成了",
+            "心小了，所有的小事就大了；心大了，所有的大事都小了；看淡世事沧桑，内心安然无恙。",
+            "在多说无益的时候，也许沉默就是最好的解释。",
+            "我能接受失败，但我不能接受放弃",
+            "当你有一种坚韧不拔的精神，当你为了一个目标愿意慢慢去努力，用时间争取自己的未来，往往最后能取得的成就比那些跑得快的人还要多。",
+            "淡然，是人生的一种成长。别让生活的压力挤走快乐，收拾情绪，重新上路。",
+            "累了，蹲下来抱抱自己，依旧倔强的说：也不过如此。",
+            "即使身处暗流，也要仰望星空啊",
+            "只有先爱自己，世界才会爱你。",
+            "用快乐带动心情，用观念导航人生，用执着追求事业，用真诚对待朋友，用平淡对待磨难，用努力追求幸福，用感恩对待生活！",
+            "每个人都是自己的英雄。",
+            "因为有悔，所以披星戴月；因为有梦，所以奋不顾身。",
+            "他未必光芒万丈，但始终温暖有光！",
+            "你的存在本身就是一件很美好的事。",
+            "我看到前方黑暗的尽头，有光在等着我。",
+            "即使深陷沟渠，也要仰望星空。",
+            "世界很大、风景很美、机会很多、人生很短，不要蜷缩在一小块阴影里。",
+            "虽则人世充满了痛苦，但也充满克服痛苦的办法。",
+            "保持乐观积极的情绪，逆着阳光，一路向前!",
+            "在以后的日子里，你还会遇到很多类似的事，但不管怎样，不要让暗影吞噬你的心。",
+            "你生来就值得被爱，这一点你无需质疑",
+            "凡自强不息者，终将得到救赎。",
+            "含泪播种的人一定能含笑收获。",
+            "黑暗的夜才会看见最美的星光，人生亦是如此。",
+            "就算世界有一千个理由让你哭泣，你也要有一千零一个理由微笑。",
+            "那些努力微笑的人，也曾在深夜里痛哭。",
+            "每一次星夜兼程，都是活下去的赞歌",
+            "如果事与愿违，就相信上帝一定另有安排。",
+            "请保持那份热爱，奔赴下一场山海。",
+            "信仰是一种很神圣的寄托。",
+            "得到就珍惜，失去不后悔，不要为难自己，不要苛求别人，如果尽力而为，那就问心无愧，无怨无悔。",
+            "人生难免经受挫折，风雨过后就是彩虹;生活难免遭受苦难，雨过天晴终有阳光。",
+            "希望你眼眸有星辰，心中有山海，从此以梦为马，不负韶华。",
+            "一切都会过去的，活在此刻！",
+            "你应该被爱，也值得被爱。"
+        ];
+
+        const colors = [
+            "rgba(255, 99, 132, 0.85)",
+            "rgba(54, 162, 235, 0.85)",
+            "rgba(255, 206, 86, 0.85)",
+            "rgba(75, 192, 192, 0.85)",
+            "rgba(153, 102, 255, 0.85)",
+            "rgba(255, 159, 64, 0.85)",
+            "rgba(199, 199, 199, 0.85)",
+            "rgba(83, 102, 255, 0.85)",
+            "rgba(40, 159, 64, 0.85)"
+        ];
+
+        // 全局变量
+        let stickerCount = 0;
+        const stickerPositions = [];
+        let isNightMode = true;
+        let particles = [];
+        let particleInterval;
+        let isEditMode = false;
+        let draggedSticker = null;
+        
+        // 设置对象
+        let settings = {
+            animationSpeed: 3,
+            fontSize: 3,
+            maxStickers: 100,
+            enableParticles: true,
+            enableHearts: true,
+            enableMusic: true,
+            enableStorage: false
+        };
+        
+        let audio;
+        let isPlaying = false;
+        let musicInterval;
+        
+        let rainbowMode = false;
+        let pulseMode = false;
+        
+        let autoGenerationInterval;
+
+        // 辅助函数
+        function getRandom(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        // 创建标签 - 修复版本
+        function createSticker(text = null) {
+            // 如果标签数量达到上限，删除最旧的标签
+            if (stickerCount >= settings.maxStickers) {
+                removeOldestSticker();
+            }
+            
+            const sticker = document.createElement("div");
+            sticker.className = "sticker";
+            
+            // 使用提供的文本或随机文本
+            const stickerText = text || texts[Math.floor(Math.random() * texts.length)];
+            
+            let color;
+            if (rainbowMode) {
+                const hue = Math.floor(getRandom(0, 360));
+                color = `hsla(${hue}, 70%, 60%, 0.85)`;
+            } else {
+                color = colors[Math.floor(Math.random() * colors.length)];
+            }
+            
+            sticker.textContent = stickerText;
+            sticker.style.backgroundColor = color;
+            
+            if (pulseMode) {
+                sticker.style.animation = `float ${getRandom(4, 8)}s infinite ease-in-out, pulse 1.5s infinite ease-in-out, glow 2s infinite ease-in-out`;
+            } else {
+                sticker.style.animation = `float ${getRandom(8, 14)}s infinite ease-in-out, glow 3s infinite ease-in-out`;
+            }
+            
+            // 设置字体大小
+            let fontSize;
+            switch(settings.fontSize) {
+                case 1: fontSize = getRandom(12, 16); break;
+                case 2: fontSize = getRandom(14, 18); break;
+                case 3: fontSize = getRandom(16, 22); break;
+                case 4: fontSize = getRandom(18, 24); break;
+                case 5: fontSize = getRandom(20, 26); break;
+                default: fontSize = getRandom(16, 22);
+            }
+            sticker.style.fontSize = `${fontSize}px`;
+            
+            // 直接设置位置，不进行重叠检测
+            const x = getRandom(5, 85);
+            const y = getRandom(15, 85);
+            sticker.style.left = `${x}%`;
+            sticker.style.top = `${y}%`;
+            
+            document.body.appendChild(sticker);
+            
+            // 记录标签位置
+            stickerPositions.push({
+                x: x,
+                y: y,
+                width: 100, // 使用估计值
+                height: 50, // 使用估计值
+                element: sticker
+            });
+            
+            stickerCount++;
+            updateStats();
+            
+            // 点击事件
+            sticker.addEventListener('click', function() {
+                if (isEditMode) return;
+                
+                this.style.transform = 'scale(0)';
+                this.style.opacity = '0';
+                
+                const index = stickerPositions.findIndex(pos => pos.element === this);
+                if (index !== -1) {
+                    stickerPositions.splice(index, 1);
+                }
+                
+                setTimeout(() => {
+                    if (this.parentNode) {
+                        this.parentNode.removeChild(this);
+                        stickerCount--;
+                        updateStats();
+                    }
+                }, 500);
+            });
+            
+            // 右键点击事件
+            if (settings.enableHearts) {
+                sticker.addEventListener('contextmenu', function(e) {
+                    e.preventDefault();
+                    createHeart(e.clientX, e.clientY);
+                    return false;
+                });
+            }
+            
+            // 编辑模式下的拖拽功能
+            if (isEditMode) {
+                sticker.style.cursor = 'move';
+                setupDraggableSticker(sticker);
+            }
+            
+            return sticker;
+        }
+
+        // 删除最早标签
+        function removeOldestSticker() {
+            if (stickerPositions.length > 0) {
+                const oldestSticker = stickerPositions[0].element;
+                oldestSticker.style.transform = 'scale(0)';
+                oldestSticker.style.opacity = '0';
+                
+                setTimeout(() => {
+                    if (oldestSticker.parentNode) {
+                        oldestSticker.parentNode.removeChild(oldestSticker);
+                        stickerPositions.shift();
+                        stickerCount--;
+                        updateStats();
+                    }
+                }, 500);
+            }
+        }
+
+        // 更新统计信息
+        function updateStats() {
+            document.getElementById('currentStickers').textContent = stickerCount;
+            document.getElementById('maxStickersDisplay').textContent = settings.maxStickers;
+        }
+
+        // 设置可拖拽标签
+        function setupDraggableSticker(sticker) {
+            sticker.addEventListener('mousedown', startDrag);
+            sticker.addEventListener('touchstart', startDrag, { passive: false });
+            
+            function startDrag(e) {
+                if (!isEditMode) return;
+                
+                e.preventDefault();
+                draggedSticker = sticker;
+                
+                const startX = e.clientX || e.touches[0].clientX;
+                const startY = e.clientY || e.touches[0].clientY;
+                const startLeft = parseFloat(sticker.style.left);
+                const startTop = parseFloat(sticker.style.top);
+                
+                function onDrag(e) {
+                    if (!draggedSticker) return;
+                    
+                    const currentX = e.clientX || e.touches[0].clientX;
+                    const currentY = e.clientY || e.touches[0].clientY;
+                    
+                    const deltaX = (currentX - startX) / window.innerWidth * 100;
+                    const deltaY = (currentY - startY) / window.innerHeight * 100;
+                    
+                    let newLeft = startLeft + deltaX;
+                    let newTop = startTop + deltaY;
+                    
+                    // 限制在屏幕范围内
+                    newLeft = Math.max(0, Math.min(95, newLeft));
+                    newTop = Math.max(0, Math.min(95, newTop));
+                    
+                    sticker.style.left = `${newLeft}%`;
+                    sticker.style.top = `${newTop}%`;
+                    
+                    // 更新位置数据
+                    const index = stickerPositions.findIndex(pos => pos.element === sticker);
+                    if (index !== -1) {
+                        stickerPositions[index].x = newLeft;
+                        stickerPositions[index].y = newTop;
+                    }
+                }
+                
+                function stopDrag() {
+                    document.removeEventListener('mousemove', onDrag);
+                    document.removeEventListener('touchmove', onDrag);
+                    document.removeEventListener('mouseup', stopDrag);
+                    document.removeEventListener('touchend', stopDrag);
+                    draggedSticker = null;
+                }
+                
+                document.addEventListener('mousemove', onDrag);
+                document.addEventListener('touchmove', onDrag, { passive: false });
+                document.addEventListener('mouseup', stopDrag);
+                document.addEventListener('touchend', stopDrag);
+            }
+        }
+
+        // 创建心形动画
+        function createHeart(x, y) {
+            if (!settings.enableHearts) return;
+            
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.left = `${x - 12}px`;
+            heart.style.top = `${y - 12}px`;
+            heart.style.animation = `heartFloat 1.2s forwards`;
+            
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                if (heart.parentNode) {
+                    heart.parentNode.removeChild(heart);
+                }
+            }, 1200);
+        }
+
+        // 切换主题
+        function toggleTheme() {
+            isNightMode = !isNightMode;
+            
+            if (isNightMode) {
+                document.body.style.background = 'var(--background-dark)';
+                document.documentElement.style.setProperty('--text-dark', '#ecf0f1');
+                document.documentElement.style.setProperty('--text-light', '#4a5568');
+                document.documentElement.style.setProperty('--card-dark', 'rgba(44, 62, 80, 0.85)');
+                document.documentElement.style.setProperty('--card-light', 'rgba(255, 255, 255, 0.85)');
+                document.querySelector('.theme-toggle').innerHTML = '<i class="fas fa-sun"></i> 日间模式';
+            } else {
+                document.body.style.background = 'var(--background-light)';
+                document.documentElement.style.setProperty('--text-dark', '#4a5568');
+                document.documentElement.style.setProperty('--text-light', '#ecf0f1');
+                document.documentElement.style.setProperty('--card-dark', 'rgba(255, 255, 255, 0.85)');
+                document.documentElement.style.setProperty('--card-light', 'rgba(44, 62, 80, 0.85)');
+                document.querySelector('.theme-toggle').innerHTML = '<i class="fas fa-moon"></i> 夜间模式';
+            }
+            
+            saveSettings();
+        }
+
+        // 创建粒子效果
+        function createParticles() {
+            if (!settings.enableParticles) return;
+            
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const size = getRandom(2, 6);
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                const x = getRandom(0, 100);
+                const y = getRandom(0, 100);
+                particle.style.left = `${x}%`;
+                particle.style.top = `${y}%`;
+                
+                const colorIndex = Math.floor(Math.random() * colors.length);
+                particle.style.backgroundColor = colors[colorIndex].replace('0.85', '0.3');
+                
+                document.body.appendChild(particle);
+                
+                particles.push({
+                    element: particle,
+                    x: x,
+                    y: y,
+                    speedX: getRandom(-0.5, 0.5),
+                    speedY: getRandom(-0.5, 0.5)
+                });
+            }
+            
+            particleInterval = setInterval(() => {
+                if (!settings.enableParticles) {
+                    clearInterval(particleInterval);
+                    return;
+                }
+                
+                particles.forEach(particle => {
+                    particle.x += particle.speedX;
+                    particle.y += particle.speedY;
+                    
+                    if (particle.x < 0 || particle.x > 100) particle.speedX *= -1;
+                    if (particle.y < 0 || particle.y > 100) particle.speedY *= -1;
+                    
+                    particle.element.style.left = `${particle.x}%`;
+                    particle.element.style.top = `${particle.y}%`;
+                });
+            }, 50);
+        }
+
+        // 清除粒子
+        function clearParticles() {
+            particles.forEach(particle => {
+                if (particle.element.parentNode) {
+                    particle.element.parentNode.removeChild(particle.element);
+                }
+            });
+            particles = [];
+            clearInterval(particleInterval);
+        }
+
+        // 初始化标签
+        function initStickers(count) {
+            for (let i = 0; i < count; i++) {
+                createSticker();
+            }
+        }
+
+        // 清除所有标签
+        function clearAllStickers() {
+            const stickers = document.querySelectorAll('.sticker');
+            stickers.forEach(sticker => {
+                sticker.style.transition = 'all 0.5s ease';
+                sticker.style.transform = 'scale(0)';
+                sticker.style.opacity = '0';
+                
+                setTimeout(() => {
+                    if (sticker.parentNode) {
+                        sticker.parentNode.removeChild(sticker);
+                    }
+                }, 500);
+            });
+            
+            stickerPositions.length = 0;
+            stickerCount = 0;
+            updateStats();
+        }
+
+        // 更新设置显示
+        function updateSettingsDisplay() {
+            let speedText;
+            switch(settings.animationSpeed) {
+                case 1: speedText = '很慢'; break;
+                case 2: speedText = '较慢'; break;
+                case 3: speedText = '正常'; break;
+                case 4: speedText = '较快'; break;
+                case 5: speedText = '很快'; break;
+                default: speedText = '正常';
+            }
+            document.getElementById('speedValue').textContent = speedText;
+            
+            let sizeText;
+            switch(settings.fontSize) {
+                case 1: sizeText = '很小'; break;
+                case 2: sizeText = '较小'; break;
+                case 3: sizeText = '中等'; break;
+                case 4: sizeText = '较大'; break;
+                case 5: sizeText = '很大'; break;
+                default: sizeText = '中等';
+            }
+            document.getElementById('sizeValue').textContent = sizeText;
+            
+            document.getElementById('maxStickersValue').textContent = settings.maxStickers;
+            
+            document.getElementById('enableParticles').checked = settings.enableParticles;
+            document.getElementById('enableHearts').checked = settings.enableHearts;
+            document.getElementById('enableMusic').checked = settings.enableMusic;
+            document.getElementById('enableStorage').checked = settings.enableStorage;
+        }
+
+        // 显示通知
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.style.display = 'block';
+            
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000);
+        }
+
+        // 切换彩虹模式
+        function toggleRainbowMode() {
+            rainbowMode = !rainbowMode;
+            document.getElementById('rainbowBtn').classList.toggle('active', rainbowMode);
+            document.getElementById('rainbowBtn').innerHTML = rainbowMode ? '<i class="fas fa-palette"></i> 彩虹模式(开)' : '<i class="fas fa-palette"></i> 彩虹模式';
+            showNotification(rainbowMode ? '彩虹模式已开启' : '彩虹模式已关闭');
+            
+            const stickers = document.querySelectorAll('.sticker');
+            stickers.forEach(sticker => {
+                if (rainbowMode) {
+                    const hue = Math.floor(getRandom(0, 360));
+                    sticker.style.backgroundColor = `hsla(${hue}, 70%, 60%, 0.85)`;
+                } else {
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+                    sticker.style.backgroundColor = color;
+                }
+            });
+        }
+
+        // 切换心跳模式
+        function togglePulseMode() {
+            pulseMode = !pulseMode;
+            document.getElementById('pulseBtn').classList.toggle('active', pulseMode);
+            document.getElementById('pulseBtn').innerHTML = pulseMode ? '<i class="fas fa-heartbeat"></i> 心跳模式(开)' : '<i class="fas fa-heartbeat"></i> 心跳模式';
+            showNotification(pulseMode ? '心跳模式已开启' : '心跳模式已关闭');
+            
+            const stickers = document.querySelectorAll('.sticker');
+            stickers.forEach(sticker => {
+                if (pulseMode) {
+                    sticker.style.animation = `float ${getRandom(4, 8)}s infinite ease-in-out, pulse 1.5s infinite ease-in-out, glow 2s infinite ease-in-out`;
+                } else {
+                    sticker.style.animation = `float ${getRandom(8, 14)}s infinite ease-in-out, glow 3s infinite ease-in-out`;
+                }
+            });
+        }
+
+        // 爆炸效果
+        function explodeStickers() {
+            const stickers = document.querySelectorAll('.sticker');
+            stickers.forEach((sticker, index) => {
+                setTimeout(() => {
+                    sticker.style.transition = 'all 0.5s ease';
+                    sticker.style.transform = `translate(${getRandom(-100, 100)}px, ${getRandom(-100, 100)}px) rotate(${getRandom(-180, 180)}deg)`;
+                    sticker.style.opacity = '0';
+                    
+                    setTimeout(() => {
+                        if (sticker.parentNode) {
+                            sticker.parentNode.removeChild(sticker);
+                            
+                            const posIndex = stickerPositions.findIndex(pos => pos.element === sticker);
+                            if (posIndex !== -1) {
+                                stickerPositions.splice(posIndex, 1);
+                            }
+                            
+                            stickerCount--;
+                            updateStats();
+                        }
+                    }, 500);
+                }, index * 50);
+            });
+            
+            showNotification('爆炸效果！所有标签已清除');
+        }
+
+        // 初始化音乐播放器
+        function initMusic() {
+            // 创建音频元素
+            audio = new Audio();
+            // 使用用户提供的音乐链接
+            audio.src = 'https://m801.music.126.net/20251104220540/8d846d1873611f77c92a5f0e37677fcd/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/18761560338/6cbf/e4f9/cc89/6aa61e4ca56ff2de994532e7078031ca.mp3?vuutv=xTZpoLrWMJiqe8RiA0K5wiGON18wTa858/h6RFB3ExVcWulVtg+ZNKwOOEcvOLoLKDt7hYRxsQraiosCP94sKpXKPmgaiXEss/D/S3EwknA=&authSecret=0000019a4f192a290bf80a3b18fb071c&cdntag=bWFyaz1vc193ZWIscXVhbGl0eV9leGhpZ2g';
+            audio.loop = true;
+            
+            // 播放按钮事件
+            document.getElementById('playBtn').addEventListener('click', function() {
+                if (settings.enableMusic) {
+                    audio.play().catch(e => {
+                        console.log("音乐播放失败:", e);
+                        showNotification("音乐播放失败，请检查网络或更换音乐源");
+                    });
+                    isPlaying = true;
+                    updateMusicProgress();
+                }
+            });
+            
+            // 暂停按钮事件
+            document.getElementById('pauseBtn').addEventListener('click', function() {
+                audio.pause();
+                isPlaying = false;
+                clearInterval(musicInterval);
+            });
+            
+            // 更新音乐进度
+            function updateMusicProgress() {
+                if (isPlaying) {
+                    const progress = document.getElementById('musicProgress');
+                    const timeDisplay = document.getElementById('musicTime');
+                    
+                    musicInterval = setInterval(() => {
+                        if (audio.duration) {
+                            const percent = (audio.currentTime / audio.duration) * 100;
+                            progress.style.width = percent + '%';
+                            
+                            const minutes = Math.floor(audio.currentTime / 60);
+                            const seconds = Math.floor(audio.currentTime % 60);
+                            timeDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                        }
+                    }, 100);
+                }
+            }
+            
+            // 音频加载事件
+            audio.addEventListener('canplaythrough', function() {
+                console.log("音乐已加载完成");
+            });
+            
+            audio.addEventListener('error', function(e) {
+                console.log("音乐加载错误:", e);
+                showNotification("音乐加载失败，请检查网络连接");
+            });
+        }
+
+        // 设置自动生成 - 每秒生成一个新标签
+        function setupAutoGeneration() {
+            if (autoGenerationInterval) {
+                clearInterval(autoGenerationInterval);
+            }
+            
+            // 每秒生成一个标签
+            autoGenerationInterval = setInterval(() => {
+                createSticker();
+            }, 1000);
+        }
+
+        // 切换编辑模式
+        function toggleEditMode() {
+            isEditMode = !isEditMode;
+            document.body.classList.toggle('edit-mode', isEditMode);
+            
+            const editBtn = document.getElementById('editModeBtn');
+            editBtn.innerHTML = isEditMode ? 
+                '<i class="fas fa-hand-paper"></i> 编辑模式(开)' : 
+                '<i class="fas fa-hand-paper"></i> 编辑模式';
+            editBtn.classList.toggle('active', isEditMode);
+            
+            showNotification(isEditMode ? '编辑模式已开启' : '编辑模式已关闭');
+            
+            // 更新所有标签的拖拽状态
+            const stickers = document.querySelectorAll('.sticker');
+            stickers.forEach(sticker => {
+                if (isEditMode) {
+                    sticker.style.cursor = 'move';
+                    setupDraggableSticker(sticker);
+                } else {
+                    sticker.style.cursor = 'pointer';
+                    // 移除拖拽事件监听器
+                    sticker.removeEventListener('mousedown', startDrag);
+                    sticker.removeEventListener('touchstart', startDrag);
+                }
+            });
+        }
+
+        // 显示自定义文本输入框
+        function showCustomTextInput() {
+            document.getElementById('customTextInput').style.display = 'block';
+            document.getElementById('customTextArea').focus();
+        }
+
+        // 隐藏自定义文本输入框
+        function hideCustomTextInput() {
+            document.getElementById('customTextInput').style.display = 'none';
+            document.getElementById('customTextArea').value = '';
+        }
+
+        // 保存自定义文本
+        function saveCustomText() {
+            const text = document.getElementById('customTextArea').value.trim();
+            if (text) {
+                createSticker(text);
+                hideCustomTextInput();
+                showNotification('自定义标签已添加');
+            } else {
+                showNotification('请输入文本内容');
+            }
+        }
+
+        // 显示统计信息面板
+        function showStatsPanel() {
+            document.getElementById('statsPanel').style.display = 'block';
+        }
+
+        // 隐藏统计信息面板
+        function hideStatsPanel() {
+            document.getElementById('statsPanel').style.display = 'none';
+        }
+
+        // 保存设置到本地存储
+        function saveSettings() {
+            if (settings.enableStorage) {
+                localStorage.setItem('stickerSettings', JSON.stringify(settings));
+                localStorage.setItem('isNightMode', isNightMode);
+            }
+        }
+
+        // 从本地存储加载设置
+        function loadSettings() {
+            const savedSettings = localStorage.getItem('stickerSettings');
+            const savedTheme = localStorage.getItem('isNightMode');
+            
+            if (savedSettings) {
+                settings = JSON.parse(savedSettings);
+            }
+            
+            if (savedTheme !== null) {
+                isNightMode = savedTheme === 'true';
+                if (!isNightMode) {
+                    toggleTheme(); // 切换到日间模式
+                }
+            }
+        }
+
+        // 初始化事件监听器
+        function initEventListeners() {
+            document.getElementById('clearBtn').addEventListener('click', clearAllStickers);
+            
+            document.getElementById('settingsBtn').addEventListener('click', function() {
+                const panel = document.getElementById('settingsPanel');
+                panel.style.display = 'block';
+            });
+            
+            document.getElementById('closeSettings').addEventListener('click', function() {
+                const panel = document.getElementById('settingsPanel');
+                panel.style.display = 'none';
+                saveSettings();
+            });
+            
+            document.querySelector('.theme-toggle').addEventListener('click', toggleTheme);
+            
+            document.getElementById('animationSpeed').addEventListener('input', function() {
+                settings.animationSpeed = parseInt(this.value);
+                updateSettingsDisplay();
+            });
+            
+            document.getElementById('fontSize').addEventListener('input', function() {
+                settings.fontSize = parseInt(this.value);
+                updateSettingsDisplay();
+            });
+            
+            document.getElementById('maxStickers').addEventListener('input', function() {
+                settings.maxStickers = parseInt(this.value);
+                updateSettingsDisplay();
+                updateStats();
+            });
+            
+            document.getElementById('enableParticles').addEventListener('change', function() {
+                settings.enableParticles = this.checked;
+                if (settings.enableParticles) {
+                    createParticles();
+                } else {
+                    clearParticles();
+                }
+            });
+            
+            document.getElementById('enableHearts').addEventListener('change', function() {
+                settings.enableHearts = this.checked;
+            });
+            
+            document.getElementById('enableMusic').addEventListener('change', function() {
+                settings.enableMusic = this.checked;
+            });
+            
+            document.getElementById('enableStorage').addEventListener('change', function() {
+                settings.enableStorage = this.checked;
+                saveSettings();
+            });
+            
+            document.getElementById('rainbowBtn').addEventListener('click', toggleRainbowMode);
+            document.getElementById('pulseBtn').addEventListener('click', togglePulseMode);
+            document.getElementById('explodeBtn').addEventListener('click', explodeStickers);
+            
+            document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+                document.getElementById('mobilePanel').style.display = 'flex';
+            });
+            
+            document.getElementById('closeMobile').addEventListener('click', function() {
+                document.getElementById('mobilePanel').style.display = 'none';
+            });
+            
+            document.getElementById('mobileClearBtn').addEventListener('click', function() {
+                clearAllStickers();
+                document.getElementById('mobilePanel').style.display = 'none';
+            });
+            
+            document.getElementById('mobileSettingsBtn').addEventListener('click', function() {
+                document.getElementById('settingsPanel').style.display = 'block';
+                document.getElementById('mobilePanel').style.display = 'none';
+            });
+            
+            document.getElementById('mobileRainbowBtn').addEventListener('click', function() {
+                toggleRainbowMode();
+                document.getElementById('mobilePanel').style.display = 'none';
+            });
+            
+            document.getElementById('mobilePulseBtn').addEventListener('click', function() {
+                togglePulseMode();
+                document.getElementById('mobilePanel').style.display = 'none';
+            });
+            
+            document.getElementById('mobileExplodeBtn').addEventListener('click', function() {
+                explodeStickers();
+                document.getElementById('mobilePanel').style.display = 'none';
+            });
+            
+            document.getElementById('mobileThemeBtn').addEventListener('click', function() {
+                toggleTheme();
+                document.getElementById('mobilePanel').style.display = 'none';
+            });
+            
+            document.getElementById('mobileCustomTextBtn').addEventListener('click', function() {
+                showCustomTextInput();
+                document.getElementById('mobilePanel').style.display = 'none';
+            });
+
+            document.getElementById('mobileStatsBtn').addEventListener('click', function() {
+                showStatsPanel();
+                document.getElementById('mobilePanel').style.display = 'none';
+            });
+
+            // 自定义文本功能
+            document.getElementById('customTextBtn').addEventListener('click', showCustomTextInput);
+            document.getElementById('cancelCustomText').addEventListener('click', hideCustomTextInput);
+            document.getElementById('saveCustomText').addEventListener('click', saveCustomText);
+            
+            // 编辑模式
+            document.getElementById('editModeBtn').addEventListener('click', toggleEditMode);
+
+            // 统计信息
+            document.getElementById('statsBtn').addEventListener('click', showStatsPanel);
+
+            // 点击统计面板外部关闭它
+            document.addEventListener('click', function(e) {
+                const statsPanel = document.getElementById('statsPanel');
+                if (statsPanel.style.display === 'block' && !statsPanel.contains(e.target) && 
+                    e.target.id !== 'statsBtn' && e.target.id !== 'mobileStatsBtn') {
+                    statsPanel.style.display = 'none';
+                }
+            });
+
+            // 双击创建标签
+            document.addEventListener('dblclick', function(e) {
+                if (e.target.classList.contains('sticker')) return;
+                createSticker();
+            });
+
+            // 页面可见性变化
+            document.addEventListener('visibilitychange', function() {
+                if (document.hidden) {
+                    document.title = "你不想理我了吗(╥﹏╥)";
+                } else {
+                    document.title = "灰原什么的最可爱了(●'◡'●)";
+                }
+            });
+        }
+
+        // 页面加载完成后的初始化
+        window.addEventListener('load', function() {
+            // 加载设置
+            loadSettings();
+            
+            // 更新设置显示
+            updateSettingsDisplay();
+            
+            // 初始化标签
+            initStickers(20);
+            
+            // 创建粒子效果
+            createParticles();
+            
+            // 设置自动生成
+            setupAutoGeneration();
+            
+            // 初始化音乐
+            initMusic();
+            
+            // 初始化事件监听器
+            initEventListeners();
+            
+            // 更新统计信息
+            updateStats();
+            
+            // 显示初始通知
+            showNotification('页面已加载完成！每秒生成一个新标签');
+        });
+    </script>
+</body>
+</html>
